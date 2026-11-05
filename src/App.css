@@ -1,0 +1,1197 @@
+
+/* =========================================
+   1. DASHBOARD LAYOUT
+========================================= */
+
+.dashboard {
+  width: 100%;
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 76px 28px 48px;
+  color: #102139;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(350px, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.left-column,
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* =========================================
+   2. PAGE HEADER
+========================================= */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.heading-title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 750;
+  letter-spacing: -1.2px;
+}
+
+.page-heading > p {
+  margin: 4px 0 0;
+  color: #586174;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.notification-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  color: #34445f;
+  background: #e3ebff;
+  cursor: pointer;
+}
+
+.notification-count {
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  display: grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: white;
+  background: #cf2424;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 29px;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 15px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-light {
+  color: #4a5265;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(24, 45, 80, 0.04);
+}
+
+.button-light svg {
+  color: #04754e;
+}
+
+.button-primary {
+  color: #ffffff;
+  background: #0750cf;
+  box-shadow: 0 5px 12px rgba(0, 71, 190, 0.18);
+}
+
+/* =========================================
+   3. COMMON CARD
+========================================= */
+
+.card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(230, 235, 245, 0.55);
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(23, 43, 77, 0.025);
+}
+
+.card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.heading-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.heading-with-icon h3,
+.card-heading h3 {
+  margin: 0;
+  color: #102139;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.35px;
+}
+
+.icon-box {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 43px;
+  border-radius: 13px;
+}
+
+.blue-icon {
+  color: #0755df;
+  background: #edf2ff;
+}
+
+.orange-icon {
+  color: #985b00;
+  background: #ffe4bf;
+}
+
+.calendar-icon {
+  color: #946000;
+  background: #fff4e3;
+}
+
+.green-icon {
+  color: #007a55;
+  background: #a4f6d7;
+}
+
+.muted-text {
+  margin: 12px 0;
+  color: #62697b;
+  font-size: 15px;
+}
+
+/* =========================================
+   4. WELCOME CARD
+========================================= */
+
+.welcome-card {
+  min-height: 228px;
+  padding: 28px;
+  border-radius: 19px;
+  color: #ffffff;
+  background: linear-gradient(115deg, #2764ed 0%, #074bd1 57%, #2860db 100%);
+  box-shadow: 0 7px 15px rgba(14, 66, 160, 0.17);
+}
+
+.welcome-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.welcome-top h2 {
+  margin: 0 0 3px;
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -0.7px;
+}
+
+.welcome-top p {
+  max-width: 230px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  opacity: 0.93;
+}
+
+.streak-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 8px 13px;
+  border-radius: 30px;
+  color: white;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.streak-badge svg {
+  color: #ffbd67;
+  fill: #ffbd67;
+}
+
+.xp-section {
+  margin-top: 25px;
+}
+
+.xp-label,
+.xp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.xp-label {
+  margin-bottom: 6px;
+  font-size: 13px;
+}
+
+.xp-label strong {
+  font-size: 14px;
+}
+
+.progress-track {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #dce8ff;
+}
+
+.xp-track {
+  height: 10px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.xp-fill {
+  background: #ffb53e;
+}
+
+.xp-footer {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+.xp-footer span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.xp-footer strong {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+/* =========================================
+   5. LEARNING PROGRESS
+========================================= */
+
+.recommend-badge {
+  padding: 7px 13px;
+  border-radius: 30px;
+  color: #142b66;
+  background: #e9edff;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.learning-track {
+  height: 10px;
+  margin: 14px 0 18px;
+}
+
+.learning-fill {
+  background: #0754d6;
+}
+
+.learning-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.stat-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 74px;
+  padding: 12px;
+  border-radius: 15px;
+  background: #eef3ff;
+}
+
+.mini-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  color: #0755df;
+  background: white;
+}
+
+.gold-icon {
+  color: #986000;
+}
+
+.stat-mini div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-mini strong {
+  font-size: 17px;
+}
+
+.stat-mini span:not(.mini-icon) {
+  color: #5c6374;
+  font-size: 13px;
+}
+
+.next-lesson {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px 12px;
+  border-radius: 15px;
+  background: #fdfdff;
+  box-shadow: 0 2px 10px rgba(20, 42, 80, 0.035);
+}
+
+.lesson-indicator {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ffa51c;
+}
+
+.lesson-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.lesson-text small {
+  color: #596174;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.lesson-text strong {
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.continue-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex-shrink: 0;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 10px;
+  color: #0750cb;
+  background: #dce5ff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   6. DAILY CHALLENGE
+========================================= */
+
+.daily-challenge {
+  padding: 27px 28px;
+  border-radius: 19px;
+  background: #fbf1e8;
+}
+
+.challenge-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.challenge-heading small {
+  display: block;
+  margin-bottom: 2px;
+  color: #986000;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.challenge-heading h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.xp-reward,
+.quest-xp {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 25px;
+  color: #573000;
+  background: #ffdfb9;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.daily-challenge > h4 {
+  margin: 16px 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.challenge-progress-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 5px;
+  color: #555c6e;
+  font-size: 13px;
+}
+
+.challenge-progress-label strong {
+  color: #102139;
+}
+
+.challenge-track {
+  height: 9px;
+}
+
+.challenge-track .progress-fill {
+  background: #0754d6;
+}
+
+.challenge-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.challenge-footer span,
+.challenge-footer button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.challenge-footer span {
+  color: #62697b;
+}
+
+.challenge-footer button {
+  padding: 0;
+  border: none;
+  color: #0755df;
+  background: transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   7. QUEST RECOMMENDATIONS
+========================================= */
+
+.quest-section {
+  min-width: 0;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.section-heading h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.section-icon {
+  color: #0755df;
+}
+
+.section-heading > button {
+  border: none;
+  color: #0755df;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.quest-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.quest-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 199px;
+  padding: 18px;
+  border: 1px solid rgba(230, 235, 245, 0.6);
+  border-radius: 19px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(23, 43, 77, 0.025);
+}
+
+.quest-badges {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+
+.difficulty-badge,
+.completed-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.difficulty-badge {
+  color: #005c3f;
+  background: #69f0bb;
+}
+
+.quest-xp {
+  padding: 5px 9px;
+  font-size: 10px;
+}
+
+.completed-badge {
+  color: #4d5c76;
+  background: #dce8ff;
+}
+
+.quest-card h4 {
+  margin: 13px 0 7px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.quest-card > p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: #5e6576;
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.quest-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 13px;
+}
+
+.quest-footer > span {
+  padding: 6px 9px;
+  border-radius: 8px;
+  color: #53617b;
+  background: #edf2ff;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.quest-footer button {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  color: #0755df;
+  background: #edf2ff;
+  cursor: pointer;
+}
+
+.quest-footer .completed-button {
+  color: #007a55;
+}
+
+/* =========================================
+   8. WEEKLY STREAK
+========================================= */
+
+.weekly-card {
+  padding: 27px;
+}
+
+.weekly-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 25px;
+  color: #004c38;
+  background: #66f2bd;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 5px;
+  margin-top: 19px;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: #535b6d;
+  font-size: 11px;
+}
+
+.day-circle {
+  display: grid;
+  place-items: center;
+  width: min(100%, 46px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.day-done {
+  color: #ffffff;
+  background: #006d4d;
+}
+
+.day-empty {
+  color: #7d8799;
+  background: #edf2ff;
+  font-size: 18px;
+}
+
+.today {
+  color: #0755df;
+  font-weight: 700;
+}
+
+.today .day-circle {
+  outline: 2px solid #38e7a5;
+  outline-offset: 3px;
+}
+
+.weekly-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 19px;
+  padding: 15px;
+  border-radius: 15px;
+  color: #555e73;
+  background: #f0f3ff;
+}
+
+.weekly-note svg {
+  flex-shrink: 0;
+  color: #9a6500;
+}
+
+.weekly-note p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.weekly-note strong {
+  color: #102139;
+}
+
+/* =========================================
+   9. QUICK STATISTICS
+========================================= */
+
+.quick-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.quick-stat-card {
+  min-height: 156px;
+  padding: 18px;
+}
+
+.quick-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.trend-icon {
+  color: #00734e;
+}
+
+.today-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: #4b5c78;
+  background: #dce8ff;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.big-stat {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 30px;
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.stat-description {
+  color: #62697b;
+  font-size: 12px;
+}
+
+/* =========================================
+   10. LEADERBOARD
+========================================= */
+
+.leaderboard-card {
+  padding: 27px;
+}
+
+.top-label {
+  color: #535b6d;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.leader-list {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  margin: 22px 0 17px;
+}
+
+.leader-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rank {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #45546f;
+  background: #dce8ff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rank-first {
+  color: #8b4800;
+  background: #ffdfba;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #46516b;
+  background: #e0eaff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.leader-info {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.leader-info strong {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leader-info span {
+  color: #62697b;
+  font-size: 12px;
+}
+
+.leader-award {
+  flex-shrink: 0;
+  color: #7b8294;
+}
+
+.gold-award {
+  color: #986000;
+}
+
+.my-rank {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  border-radius: 15px;
+  background: #f0f2ff;
+}
+
+.my-rank-number {
+  padding: 5px 9px;
+  border-radius: 7px;
+  color: white;
+  background: #0754d6;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.my-rank div {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.my-rank strong {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.my-rank div span {
+  color: #62697b;
+  font-size: 11px;
+}
+
+.my-rank > svg {
+  flex-shrink: 0;
+  color: #0755df;
+}
+
+.leaderboard-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin-top: 14px;
+  padding: 3px;
+  border: none;
+  color: #0755df;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   11. TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1050px) {
+  .dashboard {
+    padding: 48px 22px 35px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1.2fr) minmax(290px, 1fr);
+    gap: 18px;
+  }
+
+  .left-column,
+  .right-column {
+    gap: 18px;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .weekly-card,
+  .leaderboard-card {
+    padding: 22px;
+  }
+
+  .welcome-card {
+    padding: 24px;
+  }
+
+  .quest-card {
+    padding: 14px;
+  }
+
+  .header-actions {
+    gap: 7px;
+  }
+
+  .button {
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  .weekly-badge {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+}
+
+/* =========================================
+   12. MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 760px) {
+  .dashboard {
+    padding: 30px 16px;
+  }
+
+  .page-header {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .page-heading h1 {
+    font-size: 29px;
+  }
+
+  .page-heading > p br {
+    display: none;
+  }
+
+  .header-actions {
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .header-actions .button {
+    flex: 1;
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .left-column,
+  .right-column {
+    gap: 18px;
+  }
+
+  .welcome-card {
+    min-height: 205px;
+    padding: 22px;
+  }
+
+  .welcome-top h2 {
+    font-size: 25px;
+  }
+
+  .card,
+  .weekly-card,
+  .leaderboard-card {
+    padding: 21px;
+    border-radius: 17px;
+  }
+
+  .daily-challenge {
+    padding: 22px;
+  }
+
+  .heading-with-icon h3,
+  .card-heading h3 {
+    font-size: 17px;
+  }
+
+  .quest-card h4 {
+    font-size: 14px;
+  }
+
+  .quest-card > p {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .dashboard {
+    padding: 24px 12px;
+  }
+
+  .header-actions {
+    flex-direction: column;
+  }
+
+  .header-actions .button {
+    width: 100%;
+  }
+
+  .welcome-card {
+    padding: 19px;
+  }
+
+  .welcome-top h2 {
+    font-size: 23px;
+  }
+
+  .streak-badge {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+
+  .card,
+  .weekly-card,
+  .leaderboard-card {
+    padding: 17px;
+  }
+
+  .learning-stats {
+    gap: 8px;
+  }
+
+  .stat-mini {
+    gap: 7px;
+    padding: 9px;
+  }
+
+  .mini-icon {
+    width: 37px;
+    height: 37px;
+  }
+
+  .stat-mini strong {
+    font-size: 14px;
+  }
+
+  .stat-mini span:not(.mini-icon) {
+    font-size: 11px;
+  }
+
+  .next-lesson {
+    flex-wrap: wrap;
+  }
+
+  .lesson-text {
+    flex-basis: calc(100% - 25px);
+  }
+
+  .continue-button {
+    margin-left: auto;
+  }
+
+  .quest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quest-card {
+    min-height: 175px;
+  }
+
+  .weekly-badge {
+    font-size: 9px;
+  }
+
+  .weekly-note {
+    padding: 12px;
+  }
+
+  .weekly-note p {
+    font-size: 11px;
+  }
+
+  .day-item {
+    font-size: 10px;
+  }
+
+  .quick-stat-card {
+    min-height: 145px;
+    padding: 14px;
+  }
+
+  .big-stat {
+    font-size: 26px;
+  }
+
+  .leader-info strong {
+    font-size: 13px;
+  }
+}
