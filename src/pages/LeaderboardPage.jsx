@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import "./LeaderboardPage.css";
+import AppSidebar from "../components/AppSidebar";
 
 const users = [
   { id: 1, name: "Kevin Sanjaya", username: "@kevinsanjaya", level: 12, title: "SQL Master & DBA", modules: 48, challenges: 120, streak: 45, xp: 12450, avatar: "https://i.pravatar.cc/150?img=12" },
@@ -60,42 +61,7 @@ function LeaderboardPage() {
 
   return (
     <div className="leaderboard-layout">
-      <aside className="leaderboard-sidebar">
-        <div className="leaderboard-brand">
-          <div className="leaderboard-brand-icon"><Database size={23} /></div>
-          <div>
-            <h2>SQL Quest</h2>
-            <span>INTERACTIVE LAB</span>
-          </div>
-        </div>
-
-        <nav className="leaderboard-nav">
-          <a href="/dashboard"><Home size={18} />Beranda</a>
-          <a href="/learning"><BookOpen size={18} />Belajar</a>
-          <a href="#"><Gamepad2 size={18} />Game</a>
-          <a href="/leaderboard" className="active"><ListOrdered size={18} />Peringkat</a>
-          <a href="#"><Settings size={18} />Pengaturan</a>
-        </nav>
-
-        <div className="leaderboard-sidebar-bottom">
-          <div className="leaderboard-target-card">
-            <div className="target-header">
-              <strong>TARGET HARIAN</strong>
-              <b>80%</b>
-            </div>
-            <div className="target-progress"><span style={{ width: "80%" }} /></div>
-            <small>4 dari 5 kuis selesai</small>
-          </div>
-
-          <div className="leaderboard-profile">
-            <div className="profile-avatar">RM</div>
-            <div>
-              <strong>{currentUser.name}</strong>
-              <span>{currentUser.title}</span>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <AppSidebar />
 
       <main className="leaderboard-main">
         <header className="leaderboard-topbar">

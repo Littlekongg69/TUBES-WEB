@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 
 import "./LearningPage.css";
+import AppSidebar from "../components/AppSidebar";
 
 // =========================================
 // DATA MODUL PEMBELAJARAN
@@ -149,36 +150,7 @@ function LearningPage() {
 
   return (
     <div className="learning-layout">
-      {/* =====================================
-          SIDEBAR
-      ===================================== */}
-
-            <nav className="sidebar-navigation">
-        <a href="/dashboard" className="sidebar-link">
-            <Home size={19} />
-            <span>Beranda</span>
-        </a>
-
-        <a href="/learning" className="sidebar-link active">
-            <BookOpen size={19} />
-            <span>Belajar</span>
-        </a>
-
-        <a href="#" className="sidebar-link">
-            <Gamepad2 size={19} />
-            <span>Game</span>
-        </a>
-
-        <a href="#" className="sidebar-link">
-            <Trophy size={19} />
-            <span>Peringkat</span>
-        </a>
-
-        <a href="#" className="sidebar-link">
-            <Settings size={19} />
-            <span>Pengaturan</span>
-        </a>
-        </nav>
+      <AppSidebar />
 
       {/* =====================================
           MAIN CONTENT

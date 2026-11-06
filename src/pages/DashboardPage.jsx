@@ -27,6 +27,8 @@ import {
 } from "lucide-react";
 
 import "../App.css";
+import "./DashboardLayout.css";
+import AppSidebar from "../components/AppSidebar";
 
 function DashboardPage() {
   // STATE
@@ -58,9 +60,14 @@ function DashboardPage() {
   // TAMPILAN LOADING
   if (loading) {
     return (
-      <div className="status-screen">
-        <div className="loading-spinner"></div>
-        <p>Memuat dashboard...</p>
+      <div className="dashboard-layout">
+        <AppSidebar />
+        <div className="dashboard-main">
+          <div className="status-screen">
+            <div className="loading-spinner"></div>
+            <p>Memuat dashboard...</p>
+          </div>
+        </div>
       </div>
     );
   }
@@ -68,11 +75,16 @@ function DashboardPage() {
   // TAMPILAN ERROR
   if (error || !dashboardData) {
     return (
-      <div className="status-screen">
-        <p>{error || "Data dashboard tidak tersedia."}</p>
-        <button onClick={() => window.location.reload()}>
-          Coba Lagi
-        </button>
+      <div className="dashboard-layout">
+        <AppSidebar />
+        <div className="dashboard-main">
+          <div className="status-screen">
+            <p>{error || "Data dashboard tidak tersedia."}</p>
+            <button onClick={() => window.location.reload()}>
+              Coba Lagi
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
@@ -95,7 +107,10 @@ function DashboardPage() {
   const remainingXp = user.maxXp - user.xp;
 
   return (
-    <main className="dashboard">
+    <div className="dashboard-layout">
+      <AppSidebar />
+      <div className="dashboard-main">
+        <main className="dashboard">
 
       {/* HEADER */}
       <header className="page-header">
@@ -526,8 +541,10 @@ function DashboardPage() {
             </button>
           </article>
         </section>
+        </div>
+      </main>
       </div>
-    </main>
+    </div>
   );
 }
 
