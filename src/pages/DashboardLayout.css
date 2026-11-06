@@ -1,0 +1,22 @@
+/* Layout Dashboard dengan sidebar bersama */
+.dashboard-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f7f8fd;
+}
+
+.dashboard-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.dashboard-main > .dashboard {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 650px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+}
