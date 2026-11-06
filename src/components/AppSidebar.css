@@ -1,0 +1,151 @@
+
+/* ===================================
+   SHARED SIDEBAR - SQL QUEST
+=================================== */
+
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  width: 264px;
+  min-width: 264px;
+  height: 100vh;
+  min-height: 100vh;
+  padding: 20px 13px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-right: 1px solid #edf0f5;
+  z-index: 30;
+}
+.app-sidebar {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+/* BRAND */
+
+.app-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 13px;
+  margin-bottom: 27px;
+}
+
+.app-sidebar-logo {
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #0751cf;
+  border-radius: 12px;
+  box-shadow: 0 4px 9px rgba(7, 81, 207, 0.16);
+}
+
+.app-sidebar-brand-text h2 {
+  margin: 0;
+  color: #14233b;
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+}
+
+.app-sidebar-brand-text span {
+  display: block;
+  margin-top: 2px;
+  color: #0751cf;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 0.7px;
+}
+
+/* NAVIGATION */
+
+.app-sidebar-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.app-sidebar-link {
+  min-height: 51px;
+  padding: 0 17px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #454c5e;
+  text-decoration: none;
+  border-radius: 13px;
+  font-size: 14px;
+  font-weight: 550;
+  transition: background 0.2s ease, color 0.2s ease,
+    transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-sidebar-link:hover {
+  color: #0751cf;
+  background: #eef3ff;
+  transform: translateX(2px);
+}
+
+.app-sidebar-link.active {
+  color: #ffffff;
+  background: #0751cf;
+  box-shadow: 0 4px 9px rgba(7, 81, 207, 0.15);
+}
+
+.app-sidebar-link.active:hover {
+  color: #ffffff;
+  background: #0648b8;
+}
+
+.app-sidebar-link svg {
+  flex-shrink: 0;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .app-sidebar {
+    width: 215px;
+    min-width: 215px;
+  }
+}
+
+@media (max-width: 650px) {
+  .app-sidebar {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    min-height: auto;
+    padding: 13px;
+    border-right: none;
+    border-bottom: 1px solid #edf0f5;
+  }
+
+  .app-sidebar-brand {
+    margin-bottom: 14px;
+  }
+
+  .app-sidebar-navigation {
+    flex-direction: row;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .app-sidebar-link {
+    min-width: max-content;
+    min-height: 42px;
+    padding: 0 12px;
+    gap: 7px;
+    font-size: 11px;
+  }
+
+  .app-sidebar-link svg {
+    width: 16px;
+    height: 16px;
+  }
+}

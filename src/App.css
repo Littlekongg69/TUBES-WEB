@@ -2,7 +2,30 @@
 /* =========================================
    1. DASHBOARD LAYOUT
 ========================================= */
+/* =========================================
+   SHARED DASHBOARD LAYOUT
+========================================= */
 
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.dashboard-layout .app-sidebar {
+  flex-shrink: 0;
+}
+
+.dashboard-layout .dashboard {
+  flex: 1;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+}
+
+/* =========================================
+    DASHBOARD LAYOUT
+========================================= */
 .dashboard {
   width: 100%;
   max-width: 1600px;
