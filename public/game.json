@@ -1,0 +1,697 @@
+{
+  "missions": [
+    {
+      "id": 1,
+      "code": "SQL QUEST • MISI 01",
+      "category": "logika",
+      "sceneKey": "kurir-galon",
+      "featured": false,
+      "difficulty": "Mudah",
+      "snippet": "WHERE id BETWEEN 1 AND 4",
+      "snippetPos": "bottom-right",
+      "tags": [
+        "Urutan baris",
+        "BETWEEN",
+        "WHERE"
+      ],
+      "moduleLabel": "Modul 01 • Penyaringan Urutan",
+      "title": "Kurir Galon",
+      "cardSummary": "Program robot kurir antar galon di gang kampung, saring urutan rumah penerima dengan klausa: SELECT, WHERE, BETWEEN.",
+      "story": "Robot kurir mengantar galon air ke warga gang kampung dari rumah nomor 1 sampai 4 secara berurutan.",
+      "objective": "Tampilkan pesanan galon dari tabel 'antaran_galon' untuk id 1 sampai 4!",
+      "tableName": "antaran_galon",
+      "columns": [
+        "ID",
+        "NAMA_WARGA",
+        "JUMLAH",
+        "SATUAN"
+      ],
+      "rows": [
+        {
+          "id": "1",
+          "nama_bahan": "Pak RT Budi",
+          "jumlah": "2",
+          "satuan": "galon"
+        },
+        {
+          "id": "2",
+          "nama_bahan": "Bu Siti",
+          "jumlah": "1",
+          "satuan": "galon"
+        },
+        {
+          "id": "3",
+          "nama_bahan": "Kang Dedi",
+          "jumlah": "3",
+          "satuan": "galon"
+        },
+        {
+          "id": "4",
+          "nama_bahan": "Mbak Rini",
+          "jumlah": "2",
+          "satuan": "galon"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "antaran_galon"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "antaran_galon",
+        "WHERE",
+        "id BETWEEN 1 AND 4",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "id BETWEEN 1 AND 4",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "ORDER BY",
+          "tone": "mint"
+        },
+        {
+          "label": "LIMIT 1",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 120
+    },
+    {
+      "id": 2,
+      "code": "SQL QUEST • MISI 02",
+      "category": "logika",
+      "sceneKey": "alur-warung",
+      "featured": false,
+      "difficulty": "Mudah",
+      "snippet": "WHERE belanja > 50000",
+      "snippetPos": "top-left",
+      "tags": [
+        "Flowchart",
+        "Kondisi WHERE"
+      ],
+      "moduleLabel": "Modul 02 • Percabangan Logika",
+      "title": "Alur Warung",
+      "cardSummary": "Lengkapi bagan alur di atas meja kasir Bu Sri, lalu jalankan kueri penentu gratis ongkir: WHERE, AND, OR.",
+      "story": "Bu Sri memberikan promo gratis ongkir bagi pelanggan warung yang total belanjanya di atas Rp50.000.",
+      "objective": "Saring transaksi dari 'kasir_warung' dengan kondisi belanja > 50000!",
+      "tableName": "kasir_warung",
+      "columns": [
+        "ID",
+        "PELANGGAN",
+        "BELANJA",
+        "STATUS"
+      ],
+      "rows": [
+        {
+          "id": "101",
+          "nama_bahan": "Tono",
+          "jumlah": "65000",
+          "satuan": "Gratis Ongkir"
+        },
+        {
+          "id": "102",
+          "nama_bahan": "Sari",
+          "jumlah": "32000",
+          "satuan": "Ongkir 10000"
+        },
+        {
+          "id": "103",
+          "nama_bahan": "Dodi",
+          "jumlah": "80000",
+          "satuan": "Gratis Ongkir"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "kasir_warung"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "kasir_warung",
+        "WHERE",
+        "belanja > 50000",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "belanja > 50000",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "GROUP BY",
+          "tone": "mint"
+        },
+        {
+          "label": "belanja < 10000",
+          "tone": "amber-soft"
+        }
+      ],
+      "xpReward": 130
+    },
+    {
+      "id": 3,
+      "code": "SQL QUEST • MISI 03",
+      "category": "logika",
+      "sceneKey": "adu-jejak",
+      "featured": false,
+      "difficulty": "Mudah",
+      "snippet": "WHERE harga = 5000",
+      "snippetPos": "bottom-left",
+      "tags": [
+        "Tabel jejak",
+        "Variabel",
+        "Kalkulasi"
+      ],
+      "moduleLabel": "Modul 03 • Evaluasi Nilai",
+      "title": "Adu Jejak",
+      "cardSummary": "Tebak isi tiap kolom di tabel jejak, lalu adu teliti sama Dodi: evaluasi nilai kolom, operator aritmatika, dan filter.",
+      "story": "Dodi memeriksa buku catatan harga barang di meja belajar. Bantu dia menelusuri baris barang yang tepat berharga 5000.",
+      "objective": "Temukan baris pada tabel 'tabel_jejak' yang memiliki harga = 5000!",
+      "tableName": "tabel_jejak",
+      "columns": [
+        "LANGKAH",
+        "ITEM",
+        "HARGA",
+        "OUTPUT"
+      ],
+      "rows": [
+        {
+          "id": "Baris 1",
+          "nama_bahan": "Sabun Cuci",
+          "jumlah": "4000",
+          "satuan": "Valid"
+        },
+        {
+          "id": "Baris 2",
+          "nama_bahan": "Minyak Sachet",
+          "jumlah": "5000",
+          "satuan": "Valid"
+        },
+        {
+          "id": "Baris 3",
+          "nama_bahan": "Garam Dapur",
+          "jumlah": "5000",
+          "satuan": "Target"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "tabel_jejak"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "tabel_jejak",
+        "WHERE",
+        "harga = 5000",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "harga = 5000",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "ORDER BY",
+          "tone": "mint"
+        },
+        {
+          "label": "LIMIT 1",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 140
+    },
+    {
+      "id": 4,
+      "code": "SQL QUEST • MISI 04",
+      "category": "logika",
+      "sceneKey": "buku-jimpitan",
+      "featured": false,
+      "difficulty": "Mudah",
+      "snippet": "ORDER BY nominal DESC",
+      "snippetPos": "top-right",
+      "tags": [
+        "AND dan OR",
+        "Pengurutan baris"
+      ],
+      "moduleLabel": "Modul 04 • Pengurutan Buku RT",
+      "title": "Buku Jimpitan",
+      "cardSummary": "Tulis langkah kueri untuk buku jimpitan RT: operator AND dan OR, pengurutan nominal warga dari terbesar ke terkecil.",
+      "story": "Petugas ronda malam merekap kartu jimpitan RT. Urutkan catatan iuran warga dari nominal tertinggi ke terendah.",
+      "objective": "Urutkan tabel 'buku_jimpitan' menggunakan ORDER BY nominal DESC!",
+      "tableName": "buku_jimpitan",
+      "columns": [
+        "BLOK",
+        "WARGA",
+        "NOMINAL",
+        "KETERANGAN"
+      ],
+      "rows": [
+        {
+          "id": "A-03",
+          "nama_bahan": "Pak Hendra",
+          "jumlah": "12000",
+          "satuan": "Lunas"
+        },
+        {
+          "id": "A-02",
+          "nama_bahan": "Bu Dewi",
+          "jumlah": "9000",
+          "satuan": "Lunas"
+        },
+        {
+          "id": "A-05",
+          "nama_bahan": "Pak Joko",
+          "jumlah": "7000",
+          "satuan": "Lunas"
+        },
+        {
+          "id": "A-01",
+          "nama_bahan": "Mas Adi",
+          "jumlah": "4000",
+          "satuan": "Lunas"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "buku_jimpitan"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "buku_jimpitan",
+        "ORDER BY",
+        "nominal DESC",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "ORDER BY",
+          "tone": "mint"
+        },
+        {
+          "label": "nominal DESC",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "nominal ASC",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 150
+    },
+    {
+      "id": 5,
+      "code": "SQL QUEST • MISI 05",
+      "category": "tabel",
+      "sceneKey": "penyihir-tabel",
+      "featured": true,
+      "difficulty": "Mudah",
+      "snippet": "SELECT * FROM bahan_masakan",
+      "snippetPos": "bottom-right",
+      "tags": [
+        "SELECT & FROM",
+        "Schema Tree",
+        "Kolom"
+      ],
+      "moduleLabel": "Modul 05 • Dasar Pengambilan Tabel",
+      "title": "Penyihir Tag & Tabel",
+      "cardSummary": "Rapal klausa SQL yang tepat dan bangun struktur data rumah Bu Guru Ratna bagian demi bagian.",
+      "story": "Bu Guru Ratna meminta Loki menampilkan seluruh struktur bahan yang tersimpan di dalam tabel utama dapur sekolah.",
+      "objective": "Tampilkan semua baris dari tabel 'bahan_masakan'!",
+      "tableName": "bahan_masakan",
+      "columns": [
+        "ID",
+        "NAMA_BAHAN",
+        "JUMLAH",
+        "SATUAN"
+      ],
+      "rows": [
+        {
+          "id": "1.0",
+          "nama_bahan": "Salmon",
+          "jumlah": "2.0",
+          "satuan": "ekor"
+        },
+        {
+          "id": "2.0",
+          "nama_bahan": "Daikon",
+          "jumlah": "3.0",
+          "satuan": "buah"
+        },
+        {
+          "id": "3.0",
+          "nama_bahan": "Kecap Asin",
+          "jumlah": "100.0",
+          "satuan": "ml"
+        },
+        {
+          "id": "4.0",
+          "nama_bahan": "Jahe",
+          "jumlah": "10.0",
+          "satuan": "gram"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "bahan_masakan",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "bahan_masakan",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "ORDER BY",
+          "tone": "mint"
+        },
+        {
+          "label": "LIMIT 1",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 160
+    },
+    {
+      "id": 6,
+      "code": "SQL QUEST • MISI 06",
+      "category": "tabel",
+      "sceneKey": "kasir-warung",
+      "featured": false,
+      "difficulty": "Sedang",
+      "snippet": "WHERE jenis = 'Makanan'",
+      "snippetPos": "top-left",
+      "tags": [
+        "SQL Forms",
+        "INSERT",
+        "WHERE"
+      ],
+      "moduleLabel": "Modul 06 • Filter Data Pedagang",
+      "title": "Tukang Formulir",
+      "cardSummary": "Susun data formulir pesanan warga di warung Bu Sari: saring nama pedagang, jenis dagangan, dan deskripsi produk.",
+      "story": "Pak Tono mendaftarkan dagangannya lewat formulir warung Bu Sari. Tampilkan khusus pedagang dengan jenis 'Makanan'.",
+      "objective": "Saring tabel 'data_pedagang' untuk baris dengan jenis = 'Makanan'!",
+      "tableName": "data_pedagang",
+      "columns": [
+        "ID",
+        "PEDAGANG",
+        "STOK",
+        "JENIS"
+      ],
+      "rows": [
+        {
+          "id": "P-01",
+          "nama_bahan": "Tono (Bibit Cabai)",
+          "jumlah": "24",
+          "satuan": "Makanan"
+        },
+        {
+          "id": "P-02",
+          "nama_bahan": "Ratna (Kopi Bubuk)",
+          "jumlah": "15",
+          "satuan": "Minuman"
+        },
+        {
+          "id": "P-03",
+          "nama_bahan": "Sari (Tomat Segar)",
+          "jumlah": "40",
+          "satuan": "Makanan"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "data_pedagang"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "data_pedagang",
+        "WHERE",
+        "jenis = 'Makanan'",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "jenis = 'Makanan'",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "GROUP BY",
+          "tone": "mint"
+        },
+        {
+          "label": "LIMIT 5",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 180
+    },
+    {
+      "id": 7,
+      "code": "SQL QUEST • MISI 07",
+      "category": "tabel",
+      "sceneKey": "papan-menu",
+      "featured": false,
+      "difficulty": "Mudah",
+      "snippet": "GROUP BY kategori",
+      "snippetPos": "bottom-right",
+      "tags": [
+        "Daftar Kelompok",
+        "GROUP BY",
+        "COUNT"
+      ],
+      "moduleLabel": "Modul 07 • Pengelompokan Daftar",
+      "title": "Penyusun Daftar",
+      "cardSummary": "Tulis daftar kelompok bahan di papan tulis kelas Bu Guru Ratna menggunakan klausa: GROUP BY, COUNT, dan ORDER BY.",
+      "story": "Di papan tulis kelas tertulis sub-daftar Buah (Apel, Jeruk) dan Sayur. Kelompokkan baris bahan berdasarkan kategorinya!",
+      "objective": "Kelompokkan tabel 'daftar_papan' berdasarkan kolom kategori!",
+      "tableName": "daftar_papan",
+      "columns": [
+        "ID",
+        "ITEM",
+        "JUMLAH",
+        "KATEGORI"
+      ],
+      "rows": [
+        {
+          "id": "1",
+          "nama_bahan": "Apel Malang",
+          "jumlah": "12",
+          "satuan": "Buah"
+        },
+        {
+          "id": "2",
+          "nama_bahan": "Jeruk Medan",
+          "jumlah": "18",
+          "satuan": "Buah"
+        },
+        {
+          "id": "3",
+          "nama_bahan": "Bayam Hijau",
+          "jumlah": "10",
+          "satuan": "Sayur"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "kategori, COUNT(*)",
+        "FROM",
+        "daftar_papan"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "kategori, COUNT(*)",
+        "FROM",
+        "daftar_papan",
+        "GROUP BY",
+        "kategori",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "GROUP BY",
+          "tone": "mint"
+        },
+        {
+          "label": "kategori",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "ORDER BY",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 170
+    },
+    {
+      "id": 8,
+      "code": "SQL QUEST • MISI 08",
+      "category": "tabel",
+      "sceneKey": "meja-hidangan",
+      "featured": false,
+      "difficulty": "Sedang",
+      "snippet": "JOIN meja_saji ON id_menu",
+      "snippetPos": "bottom-left",
+      "tags": [
+        "Relasi Tabel",
+        "INNER JOIN",
+        "Kolom"
+      ],
+      "moduleLabel": "Modul 08 • Relasi Tabel Hidangan",
+      "title": "Penyusun Meja",
+      "cardSummary": "Tata hidangan selamatan Bu Sari dengan menggabungkan tabel Lauk, Sayur, Sambal, dan Minum menggunakan INNER JOIN.",
+      "story": "Hidangan selamatan Bu Sari disajikan dalam kolom Lauk, Sayur, Sambal, dan Minum. Gabungkan tabel hidangan dengan meja saji!",
+      "objective": "Gabungkan 'hidangan' dengan 'meja_saji' menggunakan INNER JOIN!",
+      "tableName": "hidangan",
+      "columns": [
+        "MEJA",
+        "HIDANGAN",
+        "PORSI",
+        "JENIS_SAJI"
+      ],
+      "rows": [
+        {
+          "id": "M-01",
+          "nama_bahan": "Ayam Bakar & Lalapan",
+          "jumlah": "4",
+          "satuan": "Lauk Utama"
+        },
+        {
+          "id": "M-02",
+          "nama_bahan": "Sayur Asem Kampung",
+          "jumlah": "4",
+          "satuan": "Sayur"
+        },
+        {
+          "id": "M-03",
+          "nama_bahan": "Sambal Terasi & Es Teh",
+          "jumlah": "4",
+          "satuan": "Pelengkap"
+        }
+      ],
+      "initialBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "hidangan"
+      ],
+      "solutionBlocks": [
+        "SELECT",
+        "*",
+        "FROM",
+        "hidangan",
+        "INNER JOIN",
+        "meja_saji ON id",
+        ";"
+      ],
+      "availableBlocks": [
+        {
+          "label": "INNER JOIN",
+          "tone": "mint"
+        },
+        {
+          "label": "meja_saji ON id",
+          "tone": "amber"
+        },
+        {
+          "label": ";",
+          "tone": "navy"
+        },
+        {
+          "label": "WHERE",
+          "tone": "rose"
+        },
+        {
+          "label": "LIMIT 2",
+          "tone": "sky"
+        }
+      ],
+      "xpReward": 200
+    }
+  ]
+}
