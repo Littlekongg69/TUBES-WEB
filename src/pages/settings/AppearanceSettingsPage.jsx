@@ -1,5 +1,11 @@
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Palette } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
+
+const FONT_STACKS = {
+  "JetBrains Mono": '"JetBrains Mono", var(--font-mono)',
+  "Fira Code": '"Fira Code", var(--font-mono)',
+  "Source Code": '"Source Code Pro", var(--font-mono)',
+};
 
 function AppearanceSettingsPage() {
   const {
@@ -12,6 +18,8 @@ function AppearanceSettingsPage() {
     setSaved,
   } = useOutletContext();
 
+  const activeFontStack = FONT_STACKS[font] || "var(--font-mono)";
+
   return (
     <div className="settings-single-page">
       <section
@@ -20,11 +28,17 @@ function AppearanceSettingsPage() {
         aria-labelledby="heading-appearance"
       >
         <header className="settings-section-header">
-          <div>
-            <h2 id="heading-appearance">Tampilan & Preferensi Editor</h2>
-            <p>
-              Atur skema warna antarmuka, bahasa pengantar modul, dan jenis huruf monospace untuk editor kueri SQL.
-            </p>
+          <div className="settings-section-title-group">
+            <div className="settings-section-icon" aria-hidden="true">
+              <Palette size={18} />
+            </div>
+            <div>
+              <h2 id="heading-appearance">Tampilan & Preferensi Editor</h2>
+              <p>
+                Atur skema warna antarmuka, bahasa pengantar modul, dan jenis
+                huruf monospace untuk editor kueri SQL.
+              </p>
+            </div>
           </div>
         </header>
 
@@ -38,18 +52,29 @@ function AppearanceSettingsPage() {
               aria-labelledby="theme-group-label"
             >
               {[
-                { id: "light", label: "Mode Terang", desc: "Latar kertas terang" },
-                { id: "dark", label: "Mode Gelap", desc: "Kontras rendah cahaya" },
-                { id: "system", label: "Ikuti Sistem", desc: "Sesuai pengaturan OS" },
+                {
+                  id: "light",
+                  label: "Mode Terang",
+                  desc: "Latar kertas terang",
+                },
+                {
+                  id: "dark",
+                  label: "Mode Gelap",
+                  desc: "Kontras rendah cahaya",
+                },
+                {
+                  id: "system",
+                  label: "Ikuti Sistem",
+                  desc: "Sesuai pengaturan OS",
+                },
               ].map((item) => (
                 <button
                   key={item.id}
                   type="button"
                   role="radio"
                   aria-checked={theme === item.id}
-                  className={`settings-theme-option ${
-                    theme === item.id ? "selected" : ""
-                  }`}
+                  className={`settings-theme-option ${theme === item.id ? "selected" : ""
+                    }`}
                   onClick={() => {
                     setTheme(item.id);
                     setSaved(false);
@@ -113,10 +138,24 @@ function AppearanceSettingsPage() {
                   }}
                 >
                   <strong>{item.id}</strong>
-                  <code>{item.sample}</code>
+                  <code style={{ fontFamily: FONT_STACKS[item.id] }}>
+                    {item.sample}
+                  </code>
                 </button>
               ))}
             </div>
+          </div>
+
+          <div className="settings-sql-preview" aria-label="Pratinjau konsol SQL">
+            <div className="settings-sql-preview-head">
+              <span>PRATINJAU EDITOR KUERI</span>
+              <span>{font} • {language}</span>
+            </div>
+            <pre style={{ fontFamily: activeFontStack }}>
+              <code>
+                {`SELECT id, username, level, xp\nFROM sql_learners\nWHERE streak_days >= 7\nORDER BY xp DESC\nLIMIT 5;`}
+              </code>
+            </pre>
           </div>
         </div>
       </section>
