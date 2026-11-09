@@ -1,4 +1,4 @@
-import { Clock } from "lucide-react";
+import { Bell, Clock } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 
 const Toggle = ({ checked, onChange, label = "Ubah pengaturan" }) => (
@@ -14,6 +14,8 @@ const Toggle = ({ checked, onChange, label = "Ubah pengaturan" }) => (
   </button>
 );
 
+const PRESET_TIMES = ["19:00", "20:00", "21:00"];
+
 function NotificationsSettingsPage() {
   const {
     reminderTime,
@@ -23,6 +25,35 @@ function NotificationsSettingsPage() {
     setSaved,
   } = useOutletContext();
 
+  const channels = [
+    {
+      key: "levelUp",
+      title: "Pencapaian & Kenaikan Level",
+      desc: "Tampilkan pemberitahuan saat XP bertambah dan lencana kompetensi baru terbuka.",
+      ariaLabel: "Notifikasi pencapaian dan kenaikan level",
+    },
+    {
+      key: "dailyChallenge",
+      title: "Tantangan Kueri Harian",
+      desc: "Beritahu saat soal latihan SQL harian baru tersedia setiap pukul 00:00 WIB.",
+      ariaLabel: "Notifikasi tantangan kueri harian",
+    },
+    {
+      key: "community",
+      title: "Diskusi & Tinjauan Kueri",
+      desc: "Pemberitahuan ketika solusi kueri yang kamu bagikan mendapat tanggapan pembelajar lain.",
+      ariaLabel: "Notifikasi diskusi dan tinjauan kueri",
+    },
+    {
+      key: "newsletter",
+      title: "Ringkasan Materi Mingguan",
+      desc: "Kirimkan catatan teknik pengindeksan dan optimasi kueri SQL setiap akhir pekan.",
+      ariaLabel: "Langganan ringkasan materi mingguan",
+    },
+  ];
+
+  const activeCount = channels.filter((ch) => notifications[ch.key]).length;
+
   return (
     <div className="settings-single-page">
       <section
@@ -31,11 +62,23 @@ function NotificationsSettingsPage() {
         aria-labelledby="heading-notifications"
       >
         <header className="settings-section-header">
-          <div>
-            <h2 id="heading-notifications">Jadwal Pengingat & Notifikasi</h2>
-            <p>
-              Tentukan jam pengingat latihan harian dan pilih jenis pemberitahuan aktivitas yang ingin diterima.
-            </p>
+          <div className="settings-section-title-row">
+            <div className="settings-section-title-group">
+              <div className="settings-section-icon" aria-hidden="true">
+                <Bell size={18} />
+              </div>
+              <div>
+                <h2 id="heading-notifications">Jadwal Pengingat & Notifikasi</h2>
+                <p>
+                  Tentukan jam pengingat latihan harian dan pilih jenis
+                  pemberitahuan aktivitas yang ingin diterima.
+                </p>
+              </div>
+            </div>
+
+            <span className="settings-count-pill">
+              {activeCount} / {channels.length} Aktif
+            </span>
           </div>
         </header>
 
@@ -46,78 +89,71 @@ function NotificationsSettingsPage() {
               <span>Waktu Pengingat Latihan Harian</span>
             </label>
 
-            <input
-              id="daily-reminder-time"
-              type="time"
-              value={reminderTime}
-              onChange={(e) => {
-                setReminderTime(e.target.value);
-                setSaved(false);
-              }}
-            />
+            <div className="settings-reminder-controls">
+              <div
+                className="settings-time-presets"
+                role="group"
+                aria-label="Pilihan cepat waktu pengingat"
+              >
+                {PRESET_TIMES.map((preset) => (
+                  <button
+                    key={preset}
+                    type="button"
+                    className={`settings-time-preset ${reminderTime === preset ? "active" : ""
+                      }`}
+                    onClick={() => {
+                      setReminderTime(preset);
+                      setSaved(false);
+                    }}
+                  >
+                    {preset}
+                  </button>
+                ))}
+              </div>
+
+              <input
+                id="daily-reminder-time"
+                type="time"
+                value={reminderTime}
+                onChange={(e) => {
+                  setReminderTime(e.target.value);
+                  setSaved(false);
+                }}
+              />
+            </div>
           </div>
 
           <p>
-            Pengingat dikirimkan 30 menit sebelum batas waktu harian berakhir apabila kamu belum menyelesaikan 1 kueri latihan.
+            Pengingat dikirimkan 30 menit sebelum batas waktu harian berakhir
+            apabila kamu belum menyelesaikan 1 kueri latihan.
           </p>
         </div>
 
         <div className="settings-toggle-list">
-          <div className="settings-toggle-row">
-            <div>
-              <strong>Pencapaian & Kenaikan Level</strong>
-              <span>
-                Tampilkan pemberitahuan saat XP bertambah dan lencana kompetensi baru terbuka.
-              </span>
-            </div>
-            <Toggle
-              label="Notifikasi pencapaian dan kenaikan level"
-              checked={notifications.levelUp}
-              onChange={() => updateNotification("levelUp")}
-            />
-          </div>
-
-          <div className="settings-toggle-row">
-            <div>
-              <strong>Tantangan Kueri Harian</strong>
-              <span>
-                Beritahu saat soal latihan SQL harian baru tersedia setiap pukul 00:00 WIB.
-              </span>
-            </div>
-            <Toggle
-              label="Notifikasi tantangan kueri harian"
-              checked={notifications.dailyChallenge}
-              onChange={() => updateNotification("dailyChallenge")}
-            />
-          </div>
-
-          <div className="settings-toggle-row">
-            <div>
-              <strong>Diskusi & Tinjauan Kueri</strong>
-              <span>
-                Pemberitahuan ketika solusi kueri yang kamu bagikan mendapat tanggapan pembelajar lain.
-              </span>
-            </div>
-            <Toggle
-              label="Notifikasi diskusi dan tinjauan kueri"
-              checked={notifications.community}
-              onChange={() => updateNotification("community")}
-            />
-          </div>
-
-          <div className="settings-toggle-row">
-            <div>
-              <strong>Ringkasan Materi Mingguan</strong>
-              <span>
-                Kirimkan catatan teknik pengindeksan dan optimasi kueri SQL setiap akhir pekan.
-              </span>
-            </div>
-            <Toggle
-              label="Langganan ringkasan materi mingguan"
-              checked={notifications.newsletter}
-              onChange={() => updateNotification("newsletter")}
-            />
-          </div>
+          {channels.map((item) => {
+            const isEnabled = Boolean(notifications[item.key]);
+            return (
+              <div className="settings-toggle-row" key={item.key}>
+                <div>
+                  <div className="settings-toggle-title-wrap">
+                    <strong>{item.title}</strong>
+                    <span
+                      className={`settings-channel-badge ${isEnabled ? "on" : "off"
+                        }`}
+                    >
+                      {isEnabled ? "Aktif" : "Nonaktif"}
+                    </span>
+                  </div>
+                  <span>{item.desc}</span>
+                </div>
+                <Toggle
+                  label={item.ariaLabel}
+                  checked={isEnabled}
+                  onChange={() => updateNotification(item.key)}
+                />
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
