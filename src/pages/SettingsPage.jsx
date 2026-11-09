@@ -20,6 +20,12 @@ import "./SettingsPage.css";
 import AppSidebar from "../components/AppSidebar";
 import { useSettings } from "../presentation/hooks/useSettings";
 
+const THEME_LABELS = {
+  light: "Mode Terang",
+  dark: "Mode Gelap",
+  system: "Ikuti Sistem",
+};
+
 function SettingsPage() {
   const navigate = useNavigate();
   const searchInputRef = useRef(null);
@@ -30,7 +36,11 @@ function SettingsPage() {
 
   const settingsState = useSettings();
   const {
+    theme,
+    language,
+    font,
     profile,
+    notifications,
     reminderTime,
     saved,
     loading,
@@ -75,19 +85,36 @@ function SettingsPage() {
     const q = searchQuery.trim().toLowerCase();
     if (!q) return;
 
-    if (q.includes("sandi") || q.includes("password") || q.includes("keamanan")) {
+    if (
+      q.includes("sandi") ||
+      q.includes("password") ||
+      q.includes("keamanan")
+    ) {
       navigate("/settings/security");
       return;
     }
-    if (q.includes("tema") || q.includes("dark") || q.includes("bahasa") || q.includes("font")) {
+    if (
+      q.includes("tema") ||
+      q.includes("dark") ||
+      q.includes("bahasa") ||
+      q.includes("font")
+    ) {
       navigate("/settings/appearance");
       return;
     }
-    if (q.includes("notifikasi") || q.includes("pengingat") || q.includes("streak")) {
+    if (
+      q.includes("notifikasi") ||
+      q.includes("pengingat") ||
+      q.includes("streak")
+    ) {
       navigate("/settings/notifications");
       return;
     }
-    if (q.includes("privasi") || q.includes("hapus") || q.includes("leaderboard")) {
+    if (
+      q.includes("privasi") ||
+      q.includes("hapus") ||
+      q.includes("leaderboard")
+    ) {
       navigate("/settings/privacy");
       return;
     }
@@ -125,7 +152,20 @@ function SettingsPage() {
     },
   ];
 
-  const userInitial = (profile.name || "R")[0].toUpperCase();
+  const userInitials = (profile.name || "Rani Maharani")
+    .trim()
+    .split(/\s+/)
+    .map((word) => word[0])
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+
+  const activeNotifCount = [
+    notifications?.levelUp,
+    notifications?.dailyChallenge,
+    notifications?.community,
+    notifications?.newsletter,
+  ].filter(Boolean).length;
 
   return (
     <div className="settings-layout">
@@ -189,13 +229,15 @@ function SettingsPage() {
                     <li>
                       <strong>Pengingat Streak Aktif</strong>
                       <span>
-                        Selesaikan 1 tantangan kueri sebelum pukul 23:59 WIB untuk menjaga streak 6 hari.
+                        Selesaikan 1 tantangan kueri sebelum pukul 23:59 WIB
+                        untuk menjaga streak 6 hari.
                       </span>
                     </li>
                     <li>
                       <strong>Preferensi Tersinkronisasi</strong>
                       <span>
-                        Pengaturan tema dan font editor disimpan secara lokal pada perangkat ini.
+                        Pengaturan tema dan font editor disimpan secara lokal
+                        pada perangkat ini.
                       </span>
                     </li>
                   </ul>
@@ -213,7 +255,12 @@ function SettingsPage() {
               )}
             </div>
 
-            <div className="settings-user">
+            <button
+              type="button"
+              className="settings-user-button"
+              aria-label="Buka profil pengguna"
+              onClick={() => navigate("/profile")}
+            >
               <div className="settings-user-avatar" aria-hidden="true">
                 {profile.avatarUrl ? (
                   <img
@@ -223,23 +270,30 @@ function SettingsPage() {
                     height="36"
                   />
                 ) : (
-                  userInitial
+                  userInitials
                 )}
               </div>
-              <div>
+              <div className="settings-user-meta">
                 <strong>{profile.name || "Rani Maharani"}</strong>
-                <span>Level 4 • SQL Novice</span>
+                <span>Level 4 • {profile.role || "SQL Novice"}</span>
               </div>
-            </div>
+            </button>
           </div>
         </header>
 
         <div className="settings-content">
           <div className="settings-page-heading">
             <div>
-              <h1>Pengaturan Akun & Preferensi</h1>
+              <div className="settings-heading-brand">
+                <h1>Pengaturan Akun & Preferensi</h1>
+                <span className="settings-brand-dot" aria-hidden="true" />
+              </div>
+              <span className="settings-heading-subline">
+                ACCOUNT • WORKSPACE • SECURITY
+              </span>
               <p>
-                Konfigurasi kata sandi, tema antarmuka, jadwal pengingat latihan, dan visibilitas data akun.
+                Konfigurasi kata sandi, skema tema antarmuka, jadwal pengingat
+                latihan, dan kendali privasi data akun.
               </p>
             </div>
 
@@ -308,7 +362,80 @@ function SettingsPage() {
               </button>
             </div>
           ) : (
-            <Outlet context={settingsState} />
+            <div className="settings-workspace">
+              <div className="settings-workspace-main">
+                <Outlet context={settingsState} />
+              </div>
+
+              <aside
+                className="settings-summary-aside"
+                aria-label="Ringkasan konfigurasi aktif"
+              >
+                <article className="settings-card settings-summary-card">
+                  <header className="settings-section-header">
+                    <div className="settings-summary-head">
+                      <h2>Status Konfigurasi</h2>
+                      <span
+                        className={`settings-sync-pill ${saved ? "synced" : "pending"
+                          }`}
+                      >
+                        {saved ? "Tersinkron" : "Belum Disimpan"}
+                      </span>
+                    </div>
+                    <p>
+                      Ringkasan preferensi lingkungan belajar SQL yang aktif
+                      pada peramban ini.
+                    </p>
+                  </header>
+
+                  <dl className="profile-telemetry-list">
+                    <div className="profile-telemetry-row">
+                      <dt>Skema Tema</dt>
+                      <dd>{THEME_LABELS[theme] || "Mode Terang"}</dd>
+                    </div>
+                    <div className="profile-telemetry-row">
+                      <dt>Bahasa Pengantar</dt>
+                      <dd>{language || "Indonesia"}</dd>
+                    </div>
+                    <div className="profile-telemetry-row">
+                      <dt>Font Konsol SQL</dt>
+                      <dd className="settings-mono-dd">
+                        {font || "JetBrains Mono"}
+                      </dd>
+                    </div>
+                    <div className="profile-telemetry-row">
+                      <dt>Jam Pengingat</dt>
+                      <dd className="settings-mono-dd">
+                        {reminderTime || "19:30"} WIB
+                      </dd>
+                    </div>
+                    <div className="profile-telemetry-row">
+                      <dt>Kanal Notifikasi</dt>
+                      <dd>{activeNotifCount} / 4 Aktif</dd>
+                    </div>
+                    <div className="profile-telemetry-row">
+                      <dt>Visibilitas Klasemen</dt>
+                      <dd>
+                        {notifications?.hideLeaderboard
+                          ? "Tersembunyi (Privat)"
+                          : "Publik"}
+                      </dd>
+                    </div>
+                  </dl>
+
+                  <div className="settings-summary-footer">
+                    <button
+                      type="button"
+                      className="settings-summary-action"
+                      onClick={() => navigate("/profile")}
+                    >
+                      <User size={15} aria-hidden="true" />
+                      <span>Kelola Identitas & Sertifikat Profil</span>
+                    </button>
+                  </div>
+                </article>
+              </aside>
+            </div>
           )}
         </div>
 
@@ -320,7 +447,7 @@ function SettingsPage() {
           >
             <span className={saved ? "saved" : ""} aria-hidden="true" />
             {saved
-              ? "Seluruh preferensi telah tersimpan"
+              ? "Seluruh preferensi telah tersimpan di perangkat"
               : "Terdapat perubahan preferensi yang belum disimpan"}
           </div>
 
