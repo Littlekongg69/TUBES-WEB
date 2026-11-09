@@ -1,4 +1,4 @@
-import { Eye, EyeOff } from "lucide-react";
+import { Check, Eye, EyeOff, Lock } from "lucide-react";
 import { useOutletContext } from "react-router-dom";
 
 function SecuritySettingsPage() {
@@ -18,7 +18,26 @@ function SecuritySettingsPage() {
 
   const score = passwordStrength.score || 0;
   const strengthTone =
-    score >= 3 ? "strong" : score === 2 ? "medium" : score === 1 ? "weak" : "empty";
+    score >= 3
+      ? "strong"
+      : score === 2
+        ? "medium"
+        : score === 1
+          ? "weak"
+          : "empty";
+
+  const hasMinLength = passwords.new.length >= 8;
+  const hasUppercase = /[A-Z]/.test(passwords.new);
+  const hasDigit = /[0-9]/.test(passwords.new);
+  const isConfirmed =
+    passwords.new.length > 0 && passwords.new === passwords.confirm;
+
+  const requirements = [
+    { id: "len", label: "Minimal 8 karakter", met: hasMinLength },
+    { id: "upper", label: "Mengandung huruf kapital (A-Z)", met: hasUppercase },
+    { id: "digit", label: "Mengandung angka (0-9)", met: hasDigit },
+    { id: "match", label: "Konfirmasi sandi cocok", met: isConfirmed },
+  ];
 
   return (
     <div className="settings-single-page">
@@ -28,11 +47,17 @@ function SecuritySettingsPage() {
         aria-labelledby="heading-security"
       >
         <header className="settings-section-header">
-          <div>
-            <h2 id="heading-security">Keamanan & Kata Sandi</h2>
-            <p>
-              Gunakan kombinasi minimal 8 karakter dengan huruf besar dan angka untuk mengamankan akses akun SQL Quest.
-            </p>
+          <div className="settings-section-title-group">
+            <div className="settings-section-icon" aria-hidden="true">
+              <Lock size={18} />
+            </div>
+            <div>
+              <h2 id="heading-security">Keamanan & Kata Sandi</h2>
+              <p>
+                Gunakan kombinasi minimal 8 karakter dengan huruf besar dan
+                angka untuk mengamankan akses akun SQL Quest.
+              </p>
+            </div>
           </div>
         </header>
 
@@ -92,7 +117,9 @@ function SecuritySettingsPage() {
                 value={passwords.new}
                 aria-invalid={Boolean(passwordErrors.new)}
                 aria-describedby={
-                  passwordErrors.new ? "error-password-new" : "password-strength-status"
+                  passwordErrors.new
+                    ? "error-password-new"
+                    : "password-strength-status"
                 }
                 onChange={(e) => updatePassword("new", e.target.value)}
               />
@@ -177,8 +204,27 @@ function SecuritySettingsPage() {
             )}
           </div>
 
+          <div
+            className="settings-password-checklist"
+            aria-label="Syarat keamanan kata sandi"
+          >
+            {requirements.map((req) => (
+              <div
+                key={req.id}
+                className={`settings-req-item ${req.met ? "met" : ""}`}
+              >
+                <span className="settings-req-dot" aria-hidden="true">
+                  {req.met ? <Check size={12} /> : null}
+                </span>
+                <span>{req.label}</span>
+              </div>
+            ))}
+          </div>
+
           <div className="settings-password-footer">
-            <span>Perubahan kata sandi langsung berlaku untuk sesi berikutnya.</span>
+            <span>
+              Perubahan kata sandi langsung berlaku untuk sesi berikutnya.
+            </span>
             <button type="submit" className="settings-primary-button">
               Perbarui Kata Sandi
             </button>
