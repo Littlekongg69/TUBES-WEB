@@ -93,6 +93,7 @@ export function useTheme() {
     isDark,
     setTheme,
     toggleDarkMode,
+    toggleTheme: toggleDarkMode,
   };
 }
 
