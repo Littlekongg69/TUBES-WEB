@@ -1,28 +1,40 @@
 /**
- * Domain Use Cases: Learning Modules & Filtering
+ * Domain Use Cases: User Settings & Security
  */
-export class GetLearningModulesUseCase {
-  constructor(learningRepository) {
-    this.learningRepository = learningRepository;
+import { UserSettings } from "../entities/UserSettings";
+
+export class GetInitialSettingsUseCase {
+  constructor(settingsRepository) {
+    this.settingsRepository = settingsRepository;
   }
 
   execute() {
-    return {
-      modules: this.learningRepository.getModules(),
-      filters: this.learningRepository.getFilters(),
-    };
+    return this.settingsRepository.getInitialSettings();
   }
 
   async executeAsync() {
-    return await this.learningRepository.fetchLearningData();
+    return await this.settingsRepository.fetchSettings();
   }
 }
 
-export class FilterLearningModulesUseCase {
-  execute(modules, { activeFilter = "Semua", search = "" }) {
-    return (modules || []).filter(
-      (module) =>
-        module.matchesSearch(search) && module.matchesFilter(activeFilter)
-    );
+export class SaveSettingsUseCase {
+  constructor(settingsRepository) {
+    this.settingsRepository = settingsRepository;
+  }
+
+  execute(settings) {
+    return this.settingsRepository.saveSettings(settings);
+  }
+}
+
+export class ValidateProfileUseCase {
+  execute(profile) {
+    return UserSettings.validateProfile(profile);
+  }
+}
+
+export class ValidatePasswordChangeUseCase {
+  execute(oldOrPasswords, confirmPassword) {
+    return UserSettings.validatePasswords(oldOrPasswords, confirmPassword);
   }
 }

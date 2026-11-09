@@ -1,17 +1,12 @@
-/* Layout Dashboard dengan sidebar bersama */
 .dashboard-layout {
-  min-height: 100vh;
   display: flex;
-  background: #f7f8fd;
+  min-height: 100vh;
+  background: var(--settings-bg, #f0f5fb);
+  color: var(--settings-text, #0c162c);
 }
 
-.dashboard-main {
-  min-width: 0;
+.dashboard-layout .dashboard {
   flex: 1;
-}
-
-.dashboard-main > .dashboard {
-  width: 100%;
   min-width: 0;
 }
 
