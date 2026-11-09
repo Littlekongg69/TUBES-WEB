@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AlertTriangle, Trash2 } from "lucide-react";
+import { AlertTriangle, Download, Shield, Trash2 } from "lucide-react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 const Toggle = ({ checked, onChange, label = "Ubah pengaturan" }) => (
@@ -17,8 +17,17 @@ const Toggle = ({ checked, onChange, label = "Ubah pengaturan" }) => (
 
 function PrivacySettingsPage() {
   const navigate = useNavigate();
-  const { notifications, updateNotification, handleDeleteAccount } =
-    useOutletContext();
+  const {
+    profile,
+    theme,
+    language,
+    font,
+    reminderTime,
+    notifications,
+    updateNotification,
+    handleDeleteAccount,
+    setFeedback,
+  } = useOutletContext();
   const [confirmOpen, setConfirmOpen] = useState(false);
 
   useEffect(() => {
@@ -34,6 +43,37 @@ function PrivacySettingsPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [confirmOpen]);
 
+  const handleExportData = () => {
+    const payload = {
+      exportedAt: new Date().toISOString(),
+      profile,
+      preferences: {
+        theme,
+        language,
+        font,
+        reminderTime,
+        notifications,
+      },
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "sql-quest-account-data.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    setFeedback({
+      type: "success",
+      message: "Salinan data akun berhasil diunduh dalam format JSON.",
+    });
+  };
+
   const confirmDelete = () => {
     handleDeleteAccount();
     setConfirmOpen(false);
@@ -48,19 +88,34 @@ function PrivacySettingsPage() {
         aria-labelledby="heading-privacy"
       >
         <header className="settings-section-header">
-          <div>
-            <h2 id="heading-privacy">Privasi & Pengelolaan Data Akun</h2>
-            <p>
-              Atur keterlihatan profil pada papan peringkat publik atau hapus seluruh data penyimpanan akun lokal.
-            </p>
+          <div className="settings-section-title-group">
+            <div className="settings-section-icon" aria-hidden="true">
+              <Shield size={18} />
+            </div>
+            <div>
+              <h2 id="heading-privacy">Privasi & Pengelolaan Data Akun</h2>
+              <p>
+                Atur keterlihatan profil pada papan peringkat publik, unduh
+                salinan data belajar, atau hapus penyimpanan akun lokal.
+              </p>
+            </div>
           </div>
         </header>
 
         <div className="settings-privacy-box">
           <div>
-            <strong>Sembunyikan Profil dari Leaderboard Publik</strong>
+            <div className="settings-toggle-title-wrap">
+              <strong>Sembunyikan Profil dari Leaderboard Publik</strong>
+              <span
+                className={`settings-channel-badge ${notifications.hideLeaderboard ? "on" : "off"
+                  }`}
+              >
+                {notifications.hideLeaderboard ? "Mode Privat" : "Publik"}
+              </span>
+            </div>
             <span>
-              Nama, username, dan perolehan XP tidak akan ditampilkan pada daftar peringkat umum.
+              Nama, username, dan perolehan XP tidak akan ditampilkan pada
+              daftar peringkat umum.
             </span>
           </div>
 
@@ -71,13 +126,33 @@ function PrivacySettingsPage() {
           />
         </div>
 
+        <div className="settings-export-box">
+          <div>
+            <strong>Salinan Data Akun & Preferensi (JSON)</strong>
+            <span>
+              Unduh arsip konfigurasi profil, preferensi editor SQL, dan jadwal
+              latihan yang tersimpan di perangkat ini.
+            </span>
+          </div>
+
+          <button
+            type="button"
+            className="settings-export-button"
+            onClick={handleExportData}
+          >
+            <Download size={15} aria-hidden="true" />
+            <span>Unduh Data (.json)</span>
+          </button>
+        </div>
+
         <div className="settings-danger-box">
           <div className="settings-danger-header">
             <AlertTriangle size={18} aria-hidden="true" />
             <h3>Reset & Hapus Data Akun</h3>
           </div>
           <p>
-            Tindakan ini akan menghapus seluruh preferensi tersimpan, kustomisasi profil, dan mengakhiri sesi belajar pada peramban ini.
+            Tindakan ini akan menghapus seluruh preferensi tersimpan,
+            kustomisasi profil, dan mengakhiri sesi belajar pada peramban ini.
           </p>
 
           {!confirmOpen ? (
@@ -100,7 +175,8 @@ function PrivacySettingsPage() {
                 Konfirmasi Penghapusan Data Akun
               </strong>
               <p id="danger-dialog-desc">
-                Apakah kamu yakin ingin menghapus seluruh data profil lokal dan kembali ke halaman masuk? Tekan tombol Escape untuk membatalkan.
+                Apakah kamu yakin ingin menghapus seluruh data profil lokal dan
+                kembali ke halaman masuk? Tekan tombol Escape untuk membatalkan.
               </p>
               <div className="settings-danger-actions">
                 <button
