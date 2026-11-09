@@ -1,0 +1,17 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--settings-bg, #f0f5fb);
+  color: var(--settings-text, #0c162c);
+}
+
+.dashboard-layout .dashboard {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (max-width: 650px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+}
