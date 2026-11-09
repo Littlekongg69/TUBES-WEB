@@ -1,5 +1,4 @@
 import {
-  BrowserRouter,
   Navigate,
   Route,
   Routes,
@@ -22,32 +21,30 @@ function App() {
   useTheme();
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route
-          path="/login"
-          element={<AuthPage key="login" initialMode="login" />}
-        />
-        <Route
-          path="/register"
-          element={<AuthPage key="register" initialMode="register" />}
-        />
-        <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/learning" element={<LearningPage />} />
-        <Route path="/game" element={<GamePage />} />
-        <Route path="/leaderboard" element={<LeaderboardPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/settings" element={<SettingsPage />}>
-          <Route index element={<Navigate to="security" replace />} />
-          <Route path="security" element={<SecuritySettingsPage />} />
-          <Route path="appearance" element={<AppearanceSettingsPage />} />
-          <Route path="notifications" element={<NotificationsSettingsPage />} />
-          <Route path="privacy" element={<PrivacySettingsPage />} />
-        </Route>
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route
+        path="/login"
+        element={<AuthPage key="login" initialMode="login" />}
+      />
+      <Route
+        path="/register"
+        element={<AuthPage key="register" initialMode="register" />}
+      />
+      <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/learning" element={<LearningPage />} />
+      <Route path="/game" element={<GamePage />} />
+      <Route path="/leaderboard" element={<LeaderboardPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/settings" element={<SettingsPage />}>
+        <Route index element={<Navigate to="security" replace />} />
+        <Route path="security" element={<SecuritySettingsPage />} />
+        <Route path="appearance" element={<AppearanceSettingsPage />} />
+        <Route path="notifications" element={<NotificationsSettingsPage />} />
+        <Route path="privacy" element={<PrivacySettingsPage />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
   );
 }
 
