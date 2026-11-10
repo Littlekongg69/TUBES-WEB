@@ -1,6 +1,6 @@
 /**
  * Domain Entity: AuthUser
- * Represents an authenticated SQL Quest user and provides client-side auth form validation.
+ * Represents an authenticated Byte Base user and provides client-side auth form validation.
  */
 export class AuthUser {
   constructor({

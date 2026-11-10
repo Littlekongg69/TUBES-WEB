@@ -55,7 +55,7 @@ function SecuritySettingsPage() {
               <h2 id="heading-security">Keamanan & Kata Sandi</h2>
               <p>
                 Gunakan kombinasi minimal 8 karakter dengan huruf besar dan
-                angka untuk mengamankan akses akun SQL Quest.
+                angka untuk mengamankan akses akun Byte Base.
               </p>
             </div>
           </div>
