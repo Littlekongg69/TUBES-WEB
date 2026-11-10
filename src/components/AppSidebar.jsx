@@ -60,7 +60,7 @@ function AppSidebar() {
         </div>
 
         <div className="app-sidebar-brand-text">
-          <h2>SQL Quest</h2>
+          <h2>Byte Base</h2>
           <span>INTERACTIVE SQL LAB</span>
         </div>
       </div>
