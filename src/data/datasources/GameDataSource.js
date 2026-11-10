@@ -3,7 +3,7 @@ import axios from "axios";
 export const rawGameMissions = [
   {
     id: 1,
-    code: "SQL QUEST • MISI 01",
+    code: "Byte Base • MISI 01",
     category: "logika",
     sceneKey: "kurir-galon",
     featured: false,
@@ -47,7 +47,7 @@ export const rawGameMissions = [
   },
   {
     id: 2,
-    code: "SQL QUEST • MISI 02",
+    code: "Byte Base • MISI 02",
     category: "logika",
     sceneKey: "alur-warung",
     featured: false,
@@ -90,7 +90,7 @@ export const rawGameMissions = [
   },
   {
     id: 3,
-    code: "SQL QUEST • MISI 03",
+    code: "Byte Base • MISI 03",
     category: "logika",
     sceneKey: "adu-jejak",
     featured: false,
@@ -133,7 +133,7 @@ export const rawGameMissions = [
   },
   {
     id: 4,
-    code: "SQL QUEST • MISI 04",
+    code: "Byte Base • MISI 04",
     category: "logika",
     sceneKey: "buku-jimpitan",
     featured: false,
@@ -177,7 +177,7 @@ export const rawGameMissions = [
   },
   {
     id: 5,
-    code: "SQL QUEST • MISI 05",
+    code: "Byte Base • MISI 05",
     category: "tabel",
     sceneKey: "penyihir-tabel",
     featured: true,
@@ -213,7 +213,7 @@ export const rawGameMissions = [
   },
   {
     id: 6,
-    code: "SQL QUEST • MISI 06",
+    code: "Byte Base • MISI 06",
     category: "tabel",
     sceneKey: "kasir-warung",
     featured: false,
@@ -256,7 +256,7 @@ export const rawGameMissions = [
   },
   {
     id: 7,
-    code: "SQL QUEST • MISI 07",
+    code: "Byte Base • MISI 07",
     category: "tabel",
     sceneKey: "papan-menu",
     featured: false,
@@ -299,7 +299,7 @@ export const rawGameMissions = [
   },
   {
     id: 8,
-    code: "SQL QUEST • MISI 08",
+    code: "Byte Base • MISI 08",
     category: "tabel",
     sceneKey: "meja-hidangan",
     featured: false,
