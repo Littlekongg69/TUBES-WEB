@@ -84,14 +84,14 @@ function AuthPage({ initialMode = "login", onAuthSuccess }) {
 
   return (
     <div className="auth-layout">
-      <aside className="auth-showcase" aria-label="Ringkasan kurikulum SQL Quest">
+      <aside className="auth-showcase" aria-label="Ringkasan kurikulum B">
         <div className="auth-brand-bar">
           <Link to="/dashboard" className="auth-brand">
             <div className="auth-brand-logo" aria-hidden="true">
               <Database size={22} strokeWidth={2.2} />
             </div>
             <div>
-              <h2>SQL Quest</h2>
+              <h2>Byte Base</h2>
               <span>INTERACTIVE SQL LAB</span>
             </div>
           </Link>
